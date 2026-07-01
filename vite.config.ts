@@ -5,6 +5,6 @@ import tailwindcss from '@tailwindcss/vite'
 // El "base" debe coincidir con el nombre del repositorio en GitHub Pages
 // para que las rutas de los assets se resuelvan correctamente.
 export default defineConfig({
-  base: '/balcon-del-golf/',
+  base: '/bdg/',
   plugins: [react(), tailwindcss()],
 })

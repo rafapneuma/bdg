@@ -50,7 +50,7 @@ export default function Home() {
                 {avisoDestacado.contenido}
               </p>
             </div>
-            <ChevronRight className="mt-1 shrink-0 text-slate-300" />
+            <ChevronRight className="mt-1 h-5 w-5 shrink-0 text-slate-300" />
           </div>
         </Card>
       </Link>

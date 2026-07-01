@@ -28,4 +28,4 @@ npm run preview  # previsualizar el build
 
 ## Despliegue
 
-Automático a **GitHub Pages** mediante GitHub Actions (`.github/workflows/deploy.yml`) en cada `push` a `main`. El `base` de Vite está fijado a `/balcon-del-golf/`.
+Automático a **GitHub Pages** mediante GitHub Actions (`.github/workflows/deploy.yml`) en cada `push` a `main`. El `base` de Vite está fijado a `/bdg/`.
