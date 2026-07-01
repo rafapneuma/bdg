@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* Paleta de marca Balcón del Golf (a juego con el logo) */
+@theme {
+  --color-brand-50: #eef4fd;
+  --color-brand-100: #d9e6fa;
+  --color-brand-200: #b3ccf3;
+  --color-brand-300: #82a9e8;
+  --color-brand-400: #4d7ed6;
+  --color-brand-500: #2a5cc0;
+  --color-brand-600: #1c47a0;
+  --color-brand-700: #163a82;
+  --color-brand-800: #0d3b82;
+  --color-brand-900: #0b2c60;
+
+  --color-terra-500: #c9622f;
+  --color-terra-600: #b0501f;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #f4f6fb;
+  color: #1a2233;
+  font-family: var(--font-sans);
+  /* Espacio para la barra inferior + safe area en móviles con notch */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Evita el resaltado azul al tocar botones en móvil */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
