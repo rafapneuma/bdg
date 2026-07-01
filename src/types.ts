@@ -43,4 +43,34 @@ export interface Documento {
   fecha: string // ISO
   paginas: number
   tamano: string
+  concepto?: string // agrupa presupuestos de una misma comparativa
+}
+
+export interface Vivienda {
+  id: string
+  referencia: string
+  propietario: string
+  cuotaMensual: number
+  recibosPendientes: number // nº de recibos impagados
+}
+
+export type TipoMovimiento = 'ingreso' | 'gasto'
+export type Cuenta = 'corriente' | 'fondo'
+
+export interface Movimiento {
+  id: string
+  fecha: string // ISO
+  concepto: string
+  tipo: TipoMovimiento
+  cuenta: Cuenta
+  importe: number
+  auto?: boolean // generado automáticamente (cobro de cuota / pago de partida)
+}
+
+export interface Partida {
+  id: string
+  concepto: string
+  importe: number
+  pagada: boolean
+  documentoId?: string // presupuesto adjuntado (documento tipo Presupuesto)
 }

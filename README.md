@@ -11,7 +11,7 @@ Prototipo de web app para la comunidad de vecinos **Balcón del Golf** (Riviera 
 - **Sondeos** — un sondeo activo para votar (resultados en barras en directo) y sondeos cerrados.
 - **Avisos** — tablón de comunicados de la comunidad.
 - **Documentos** — actas, presupuestos y facturas (visor de ejemplo, sin PDF real).
-- **Económico** — presupuestos, saldo, previsiones y estado de deuda de una vivienda (solo lectura, sin pagos).
+- **Económico** — saldo y fondo **calculados** a partir de un mini-libro de movimientos, viviendas con cuotas/recibos (estado y morosidad automáticos) y partidas aprobadas con presupuesto adjunto (solo lectura, sin pagos).
 - **Administración** — panel de gestión visible solo para roles con permisos (crear avisos, subir documentos, crear/cerrar sondeos, editar económico).
 
 ## Roles (demo)

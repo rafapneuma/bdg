@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
+import { calcularResumen } from '../lib/economia'
 import { Card, Chip } from '../components/ui'
 import {
   BellIcon,
@@ -11,7 +12,8 @@ import {
 import { fechaRelativa, euros } from '../lib/format'
 
 export default function Home() {
-  const { incidencias, sondeos, avisos, economico } = useApp()
+  const { incidencias, sondeos, avisos, viviendas, movimientos, partidas } = useApp()
+  const resumen = calcularResumen(viviendas, movimientos, partidas)
   const abiertas = incidencias.filter((i) => i.estado !== 'Resuelta').length
   const avisoDestacado = avisos.find((a) => a.destacado) ?? avisos[0]
   const sondeoActivo = sondeos.find((s) => s.estado === 'activo')
@@ -74,7 +76,7 @@ export default function Home() {
               <EuroIcon className="h-5 w-5" />
             </span>
             <p className="mt-3 text-3xl font-bold text-slate-800">
-              {euros(economico.saldoActual)}
+              {euros(resumen.saldoActual)}
             </p>
             <p className="text-sm text-slate-500">saldo actual</p>
           </Card>
