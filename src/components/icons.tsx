@@ -92,6 +92,15 @@ export function CameraIcon({ className = 'h-5 w-5' }: IconProps) {
   )
 }
 
+export function ShieldIcon({ className = base }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 3 5 6v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V6z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  )
+}
+
 export function CheckIcon({ className = 'h-5 w-5' }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" className={className}>

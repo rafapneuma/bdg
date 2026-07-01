@@ -1,8 +1,9 @@
-import { datosEconomicos as d } from '../data/mockData'
+import { useApp } from '../context/AppContext'
 import { PageHeader, Card } from '../components/ui'
 import { euros } from '../lib/format'
 
 export default function Economico() {
+  const { economico: d } = useApp()
   const maxGasto = Math.max(...d.gastosPorCategoria.map((g) => g.importe))
   const alCorriente = d.tuVivienda.estado === 'al_corriente'
 

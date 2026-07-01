@@ -9,6 +9,7 @@ import Sondeos from './pages/Sondeos'
 import Avisos from './pages/Avisos'
 import Documentos from './pages/Documentos'
 import Economico from './pages/Economico'
+import Admin from './pages/Admin'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/avisos" element={<Avisos />} />
           <Route path="/documentos" element={<Documentos />} />
           <Route path="/economico" element={<Economico />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
       <BottomNav />

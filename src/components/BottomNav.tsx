@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom'
+import { useApp } from '../context/AppContext'
+import { tieneAccesoAdmin } from '../roles'
 import {
   HomeIcon,
   WrenchIcon,
@@ -6,9 +8,10 @@ import {
   BellIcon,
   DocIcon,
   EuroIcon,
+  ShieldIcon,
 } from './icons'
 
-const items = [
+const baseItems = [
   { to: '/', label: 'Inicio', Icon: HomeIcon, end: true },
   { to: '/incidencias', label: 'Incidencias', Icon: WrenchIcon, end: false },
   { to: '/sondeos', label: 'Sondeos', Icon: PollIcon, end: false },
@@ -17,12 +20,20 @@ const items = [
   { to: '/economico', label: 'Económico', Icon: EuroIcon, end: false },
 ]
 
+const adminItem = { to: '/admin', label: 'Admin', Icon: ShieldIcon, end: false }
+
 export default function BottomNav() {
+  const { permisos } = useApp()
+  const items = tieneAccesoAdmin(permisos) ? [...baseItems, adminItem] : baseItems
+
   return (
     <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-white/95 backdrop-blur">
       <div
-        className="mx-auto grid max-w-lg grid-cols-6"
-        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        className="mx-auto grid max-w-lg"
+        style={{
+          gridTemplateColumns: `repeat(${items.length}, minmax(0, 1fr))`,
+          paddingBottom: 'env(safe-area-inset-bottom)',
+        }}
       >
         {items.map(({ to, label, Icon, end }) => (
           <NavLink

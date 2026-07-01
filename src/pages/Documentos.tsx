@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { documentosIniciales } from '../data/mockData'
+import { useApp } from '../context/AppContext'
 import { PageHeader, Card } from '../components/ui'
 import { DocIcon, ArrowLeft } from '../components/icons'
 import { formatearFecha } from '../lib/format'
@@ -14,6 +14,7 @@ const tipoColor: Record<Documento['tipo'], string> = {
 }
 
 export default function Documentos() {
+  const { documentos } = useApp()
   const [doc, setDoc] = useState<Documento | null>(null)
 
   return (
@@ -21,7 +22,7 @@ export default function Documentos() {
       <PageHeader titulo="Documentos" subtitulo="Actas, presupuestos y facturas" />
 
       <div className="space-y-3">
-        {documentosIniciales.map((d) => (
+        {documentos.map((d) => (
           <button key={d.id} onClick={() => setDoc(d)} className="block w-full text-left">
             <Card className="transition-shadow active:shadow-md">
               <div className="flex items-center gap-3">

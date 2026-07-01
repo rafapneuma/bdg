@@ -12,6 +12,20 @@ Prototipo de web app para la comunidad de vecinos **Balcón del Golf** (Riviera 
 - **Avisos** — tablón de comunicados de la comunidad.
 - **Documentos** — actas, presupuestos y facturas (visor de ejemplo, sin PDF real).
 - **Económico** — presupuestos, saldo, previsiones y estado de deuda de una vivienda (solo lectura, sin pagos).
+- **Administración** — panel de gestión visible solo para roles con permisos (crear avisos, subir documentos, crear/cerrar sondeos, editar económico).
+
+## Roles (demo)
+
+Como la demo no tiene login, hay un **selector de rol** en la cabecera para ponerte en la piel de cada cargo:
+
+| Acción | Administrador | Presidente | Vicepresidente | Vecino |
+|---|:--:|:--:|:--:|:--:|
+| Editar económico | ✅ | — | — | — |
+| Gestionar documentos | ✅ | ✅ | — | — |
+| Crear avisos | ✅ | ✅ | ✅ | — |
+| Crear/cerrar sondeos | ✅ | ✅ | ✅ | — |
+| Cambiar estado de incidencias | ✅ | ✅ | ✅ | — |
+| Crear incidencias / votar | ✅ | ✅ | ✅ | ✅ |
 
 ## Stack
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { avisosIniciales } from '../data/mockData'
+import { useApp } from '../context/AppContext'
 import { PageHeader, Card } from '../components/ui'
 import { BellIcon, ChevronRight } from '../components/icons'
 import { formatearFecha } from '../lib/format'
@@ -12,8 +12,9 @@ const categoriaColor: Record<string, string> = {
 }
 
 export default function Avisos() {
+  const { avisos } = useApp()
   // El aviso destacado empieza desplegado
-  const destacadoId = avisosIniciales.find((a) => a.destacado)?.id
+  const destacadoId = avisos.find((a) => a.destacado)?.id
   const [abierto, setAbierto] = useState<string | null>(destacadoId ?? null)
 
   return (
@@ -21,7 +22,7 @@ export default function Avisos() {
       <PageHeader titulo="Avisos" subtitulo="Tablón de anuncios de la comunidad" />
 
       <div className="space-y-3">
-        {avisosIniciales.map((av) => {
+        {avisos.map((av) => {
           const expandido = abierto === av.id
           return (
             <Card

@@ -3,11 +3,14 @@ import { useApp } from '../context/AppContext'
 import { Card, EstadoBadge } from '../components/ui'
 import { ArrowLeft } from '../components/icons'
 import { formatearFechaHora } from '../lib/format'
+import type { EstadoIncidencia } from '../types'
+
+const ESTADOS: EstadoIncidencia[] = ['Abierta', 'En curso', 'Resuelta']
 
 export default function IncidenciaDetalle() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { incidencias } = useApp()
+  const { incidencias, permisos, cambiarEstadoIncidencia } = useApp()
   const inc = incidencias.find((i) => i.id === id)
 
   if (!inc) {
@@ -62,6 +65,30 @@ export default function IncidenciaDetalle() {
           {inc.descripcion}
         </p>
       </Card>
+
+      {/* Gestión del estado (solo con permiso) */}
+      {permisos.gestionarIncidencias && (
+        <Card className="mt-4 border border-brand-100 bg-brand-50/40">
+          <p className="mb-2 flex items-center gap-1.5 text-sm font-semibold text-brand-800">
+            🛠️ Gestión — cambiar estado
+          </p>
+          <div className="grid grid-cols-3 gap-2">
+            {ESTADOS.map((e) => (
+              <button
+                key={e}
+                onClick={() => cambiarEstadoIncidencia(inc.id, e)}
+                className={`rounded-xl px-2 py-2.5 text-sm font-semibold transition-colors ${
+                  inc.estado === e
+                    ? 'bg-brand-700 text-white'
+                    : 'bg-white text-slate-600 ring-1 ring-slate-200 active:bg-slate-50'
+                }`}
+              >
+                {e}
+              </button>
+            ))}
+          </div>
+        </Card>
+      )}
 
       {/* Seguimiento de ejemplo */}
       <h2 className="mb-2 mt-6 text-sm font-semibold uppercase tracking-wide text-slate-400">

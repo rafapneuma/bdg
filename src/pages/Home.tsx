@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
-import { avisosIniciales, datosEconomicos } from '../data/mockData'
 import { Card, Chip } from '../components/ui'
 import {
   BellIcon,
@@ -12,9 +11,9 @@ import {
 import { fechaRelativa, euros } from '../lib/format'
 
 export default function Home() {
-  const { incidencias, sondeos } = useApp()
+  const { incidencias, sondeos, avisos, economico } = useApp()
   const abiertas = incidencias.filter((i) => i.estado !== 'Resuelta').length
-  const avisoDestacado = avisosIniciales.find((a) => a.destacado) ?? avisosIniciales[0]
+  const avisoDestacado = avisos.find((a) => a.destacado) ?? avisos[0]
   const sondeoActivo = sondeos.find((s) => s.estado === 'activo')
   const totalVotos = sondeoActivo?.opciones.reduce((a, o) => a + o.votos, 0) ?? 0
 
@@ -75,7 +74,7 @@ export default function Home() {
               <EuroIcon className="h-5 w-5" />
             </span>
             <p className="mt-3 text-3xl font-bold text-slate-800">
-              {euros(datosEconomicos.saldoActual)}
+              {euros(economico.saldoActual)}
             </p>
             <p className="text-sm text-slate-500">saldo actual</p>
           </Card>
